@@ -39,6 +39,13 @@ class HomeViewController: UIViewController {
         tableView.tableFooterView = UIView()
         tableView.separatorStyle = .none
     }
+    
+    
+    func configureCell(_ cell: PostActionCell, with post: Post) {
+        cell.timaAgoLabel.text = timestampFormatter.string(from: post.creationDate)
+        cell.likeButton.isSelected = post.isLiked
+        cell.likeCountLabel.text = "\(post.likeCount) likes"
+    }
 }
 
 extension HomeViewController: UITableViewDataSource {
@@ -48,6 +55,7 @@ extension HomeViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let post = posts[indexPath.section]
+        
         
         switch indexPath.row {
         case 0:
@@ -65,7 +73,8 @@ extension HomeViewController: UITableViewDataSource {
             
         case 2:
             let cell = tableView.dequeueReusableCell(withIdentifier: "PostActionCell") as! PostActionCell
-            cell.timaAgoLabel.text = timestampFormatter.string(from: post.creationDate)
+            cell.delegate = self
+            configureCell(cell, with: post)
             
             return cell
             
@@ -100,3 +109,34 @@ extension HomeViewController: UITableViewDelegate {
         return PostActionCell.height
     }
 }
+
+extension HomeViewController: PostActionCellDelegate {
+    func didTapLikeButton(_ likeButton: UIButton, on cell: PostActionCell) {
+        guard let indexPath = tableView.indexPath(for: cell)
+            else { return }
+        
+        likeButton.isUserInteractionEnabled = false
+        
+        let post = posts[indexPath.section]
+        
+        LikeService.setIsLiked(!post.isLiked, for: post) { (success) in
+            defer {
+                likeButton.isUserInteractionEnabled = true
+            }
+            
+            guard success else { return }
+            
+            post.likeCount += !post.isLiked ? 1 : -1
+            post.isLiked = !post.isLiked
+            
+            guard let cell = self.tableView.cellForRow(at: indexPath) as? PostActionCell
+                else { return }
+            
+            DispatchQueue.main.async {
+                self.configureCell(cell, with: post)
+            }
+        }
+    }
+}
+
+
