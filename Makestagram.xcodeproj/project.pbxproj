@@ -23,6 +23,9 @@
 		C1971CCC1F05AAF400BF5D48 /* StorageReference+Post.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1971CCB1F05AAF400BF5D48 /* StorageReference+Post.swift */; };
 		C1971CCE1F05B59F00BF5D48 /* Home.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C1971CCD1F05B59F00BF5D48 /* Home.storyboard */; };
 		C1971CD11F05CBE400BF5D48 /* PostImageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1971CD01F05CBE400BF5D48 /* PostImageCell.swift */; };
+		C1971CD31F06BB0500BF5D48 /* PostHeaderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1971CD21F06BB0500BF5D48 /* PostHeaderCell.swift */; };
+		C1971CD51F06BCF600BF5D48 /* PostActionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1971CD41F06BCF600BF5D48 /* PostActionCell.swift */; };
+		C1971CD71F06C6FC00BF5D48 /* LikeService.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1971CD61F06C6FC00BF5D48 /* LikeService.swift */; };
 		C1B9FE4A1F0410B1009DBA04 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1B9FE491F0410B1009DBA04 /* AppDelegate.swift */; };
 		C1E970BB1F041A9000546698 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C1E970BA1F041A9000546698 /* Main.storyboard */; };
 		C1E970BD1F041A9800546698 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C1E970BC1F041A9800546698 /* LaunchScreen.storyboard */; };
@@ -52,6 +55,9 @@
 		C1971CCB1F05AAF400BF5D48 /* StorageReference+Post.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "StorageReference+Post.swift"; path = "Makestagram/Extensions/StorageReference+Post.swift"; sourceTree = "<group>"; };
 		C1971CCD1F05B59F00BF5D48 /* Home.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = Home.storyboard; path = Storyboards/Home.storyboard; sourceTree = "<group>"; };
 		C1971CD01F05CBE400BF5D48 /* PostImageCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PostImageCell.swift; path = Views/PostImageCell.swift; sourceTree = "<group>"; };
+		C1971CD21F06BB0500BF5D48 /* PostHeaderCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PostHeaderCell.swift; path = Views/PostHeaderCell.swift; sourceTree = "<group>"; };
+		C1971CD41F06BCF600BF5D48 /* PostActionCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PostActionCell.swift; path = Views/PostActionCell.swift; sourceTree = "<group>"; };
+		C1971CD61F06C6FC00BF5D48 /* LikeService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LikeService.swift; path = Services/LikeService.swift; sourceTree = "<group>"; };
 		C1B9FE461F0410B1009DBA04 /* Makestagram.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Makestagram.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C1B9FE491F0410B1009DBA04 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C1E970BA1F041A9000546698 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = Main.storyboard; path = Storyboards/Main.storyboard; sourceTree = "<group>"; };
@@ -82,6 +88,7 @@
 				C1971CA81F04B62200BF5D48 /* UserService.swift */,
 				C1971CC31F059E5700BF5D48 /* StorageService.swift */,
 				C1971CC51F05A01A00BF5D48 /* PostService.swift */,
+				C1971CD61F06C6FC00BF5D48 /* LikeService.swift */,
 			);
 			name = Services;
 			sourceTree = "<group>";
@@ -110,6 +117,8 @@
 			isa = PBXGroup;
 			children = (
 				C1971CD01F05CBE400BF5D48 /* PostImageCell.swift */,
+				C1971CD21F06BB0500BF5D48 /* PostHeaderCell.swift */,
+				C1971CD41F06BCF600BF5D48 /* PostActionCell.swift */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -341,6 +350,8 @@
 				C1E970CB1F044FC000546698 /* User.swift in Sources */,
 				C1971CBF1F057B7A00BF5D48 /* MainTabBarController.swift in Sources */,
 				C1E970C81F041FDB00546698 /* LoginViewController.swift in Sources */,
+				C1971CD51F06BCF600BF5D48 /* PostActionCell.swift in Sources */,
+				C1971CD71F06C6FC00BF5D48 /* LikeService.swift in Sources */,
 				C1971CC81F05A2D700BF5D48 /* Post.swift in Sources */,
 				C1971CD11F05CBE400BF5D48 /* PostImageCell.swift in Sources */,
 				C1971CCA1F05A97A00BF5D48 /* UIImage+Size.swift in Sources */,
@@ -352,6 +363,7 @@
 				C1971CA91F04B62200BF5D48 /* UserService.swift in Sources */,
 				C1971CC61F05A01A00BF5D48 /* PostService.swift in Sources */,
 				C1E970CD1F04567700546698 /* CreateUsernameViewController.swift in Sources */,
+				C1971CD31F06BB0500BF5D48 /* PostHeaderCell.swift in Sources */,
 				C1B9FE4A1F0410B1009DBA04 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

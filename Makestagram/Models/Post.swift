@@ -29,7 +29,7 @@ class Post {
     }
     
     init?(snapshot: DataSnapshot) {
-        guard let dict = snapshot.value as? [String: Any], let imgURL = dict["image_url"] as? String, let imgHeight = dict["image_height"] as? CGFloat,
+        guard let dict = snapshot.value as? [String: Any], let imgURL = dict["img_url"] as? String, let imgHeight = dict["img_height"] as? CGFloat,
             let createdAgo = dict["created_at"] as? TimeInterval else { return nil }
         
         self.key = snapshot.key
