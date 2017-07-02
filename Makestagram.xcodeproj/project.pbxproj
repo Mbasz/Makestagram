@@ -12,9 +12,10 @@
 		C1907FBB1F06F56000E704A0 /* FindFriends.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C1907FBA1F06F56000E704A0 /* FindFriends.storyboard */; };
 		C1907FBD1F06F61600E704A0 /* FindFriendsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1907FBC1F06F61600E704A0 /* FindFriendsCell.swift */; };
 		C1907FBF1F08D39700E704A0 /* DatabaseReference+Location.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1907FBE1F08D39700E704A0 /* DatabaseReference+Location.swift */; };
+		C1907FC11F096E1200E704A0 /* UITableView+Utility.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1907FC01F096E1200E704A0 /* UITableView+Utility.swift */; };
+		C1907FC31F096E7E00E704A0 /* UIStoryboard+Utility.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1907FC21F096E7E00E704A0 /* UIStoryboard+Utility.swift */; };
 		C1971CA91F04B62200BF5D48 /* UserService.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1971CA81F04B62200BF5D48 /* UserService.swift */; };
 		C1971CAB1F05625300BF5D48 /* Constant.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1971CAA1F05625300BF5D48 /* Constant.swift */; };
-		C1971CAE1F05631200BF5D48 /* Storyboard+Utility.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1971CAD1F05631200BF5D48 /* Storyboard+Utility.swift */; };
 		C1971CB71F0570A900BF5D48 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1971CB61F0570A900BF5D48 /* HomeViewController.swift */; };
 		C1971CB91F0570BD00BF5D48 /* FindFriendsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1971CB81F0570BD00BF5D48 /* FindFriendsViewController.swift */; };
 		C1971CBD1F05722D00BF5D48 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C1971CBC1F05722D00BF5D48 /* Assets.xcassets */; };
@@ -48,9 +49,10 @@
 		C1907FBA1F06F56000E704A0 /* FindFriends.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = FindFriends.storyboard; path = Storyboards/FindFriends.storyboard; sourceTree = "<group>"; };
 		C1907FBC1F06F61600E704A0 /* FindFriendsCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FindFriendsCell.swift; path = Views/FindFriendsCell.swift; sourceTree = "<group>"; };
 		C1907FBE1F08D39700E704A0 /* DatabaseReference+Location.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "DatabaseReference+Location.swift"; path = "Makestagram/Extensions/DatabaseReference+Location.swift"; sourceTree = "<group>"; };
+		C1907FC01F096E1200E704A0 /* UITableView+Utility.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "UITableView+Utility.swift"; path = "Makestagram/Extensions/UITableView+Utility.swift"; sourceTree = "<group>"; };
+		C1907FC21F096E7E00E704A0 /* UIStoryboard+Utility.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "UIStoryboard+Utility.swift"; path = "Makestagram/Extensions/UIStoryboard+Utility.swift"; sourceTree = "<group>"; };
 		C1971CA81F04B62200BF5D48 /* UserService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UserService.swift; path = Services/UserService.swift; sourceTree = "<group>"; };
 		C1971CAA1F05625300BF5D48 /* Constant.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Constant.swift; path = Supporting/Constant.swift; sourceTree = "<group>"; };
-		C1971CAD1F05631200BF5D48 /* Storyboard+Utility.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "Storyboard+Utility.swift"; path = "Makestagram/Extensions/Storyboard+Utility.swift"; sourceTree = "<group>"; };
 		C1971CB61F0570A900BF5D48 /* HomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = HomeViewController.swift; path = Controllers/HomeViewController.swift; sourceTree = "<group>"; };
 		C1971CB81F0570BD00BF5D48 /* FindFriendsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FindFriendsViewController.swift; path = Controllers/FindFriendsViewController.swift; sourceTree = "<group>"; };
 		C1971CBC1F05722D00BF5D48 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -105,10 +107,11 @@
 		C1971CAC1F0562EB00BF5D48 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
-				C1971CAD1F05631200BF5D48 /* Storyboard+Utility.swift */,
+				C1907FC21F096E7E00E704A0 /* UIStoryboard+Utility.swift */,
 				C1971CC91F05A97A00BF5D48 /* UIImage+Size.swift */,
 				C1971CCB1F05AAF400BF5D48 /* StorageReference+Post.swift */,
 				C1907FBE1F08D39700E704A0 /* DatabaseReference+Location.swift */,
+				C1907FC01F096E1200E704A0 /* UITableView+Utility.swift */,
 			);
 			name = Extensions;
 			path = ..;
@@ -361,7 +364,9 @@
 				C1907FB91F06EC5300E704A0 /* FollowService.swift in Sources */,
 				C1971CAB1F05625300BF5D48 /* Constant.swift in Sources */,
 				C1971CC41F059E5700BF5D48 /* StorageService.swift in Sources */,
+				C1907FC31F096E7E00E704A0 /* UIStoryboard+Utility.swift in Sources */,
 				C1E970CB1F044FC000546698 /* User.swift in Sources */,
+				C1907FC11F096E1200E704A0 /* UITableView+Utility.swift in Sources */,
 				C1971CBF1F057B7A00BF5D48 /* MainTabBarController.swift in Sources */,
 				C1E970C81F041FDB00546698 /* LoginViewController.swift in Sources */,
 				C1971CD51F06BCF600BF5D48 /* PostActionCell.swift in Sources */,
@@ -372,7 +377,6 @@
 				C1971CCA1F05A97A00BF5D48 /* UIImage+Size.swift in Sources */,
 				C1971CB71F0570A900BF5D48 /* HomeViewController.swift in Sources */,
 				C1971CC11F0580AB00BF5D48 /* MGPhotoHelper.swift in Sources */,
-				C1971CAE1F05631200BF5D48 /* Storyboard+Utility.swift in Sources */,
 				C1971CB91F0570BD00BF5D48 /* FindFriendsViewController.swift in Sources */,
 				C1907FBF1F08D39700E704A0 /* DatabaseReference+Location.swift in Sources */,
 				C1971CCC1F05AAF400BF5D48 /* StorageReference+Post.swift in Sources */,
