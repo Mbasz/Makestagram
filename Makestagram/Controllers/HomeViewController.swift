@@ -13,6 +13,8 @@ import Kingfisher
 
 class HomeViewController: UIViewController {
     
+    let refreshControl = UIRefreshControl()
+    
     let timestampFormatter: DateFormatter = {
         let dateFormatter = DateFormatter()
         dateFormatter.dateStyle = .short
@@ -28,23 +30,33 @@ class HomeViewController: UIViewController {
         super.viewDidLoad()
         
         configureTableView()
-        
-        UserService.posts(for: User.current) { (posts) in
-            self.posts = posts
-            self.tableView.reloadData()
-        }
+        reloadTimeline()
     }
     
     func configureTableView() {
         tableView.tableFooterView = UIView()
         tableView.separatorStyle = .none
+        
+        refreshControl.addTarget(self, action: #selector(reloadTimeline), for: .valueChanged)
+        tableView.addSubview(refreshControl)
     }
-    
     
     func configureCell(_ cell: PostActionCell, with post: Post) {
         cell.timaAgoLabel.text = timestampFormatter.string(from: post.creationDate)
         cell.likeButton.isSelected = post.isLiked
         cell.likeCountLabel.text = "\(post.likeCount) likes"
+    }
+    
+    func reloadTimeline() {
+        UserService.timeline { (posts) in
+            self.posts = posts
+            
+            if self.refreshControl.isRefreshing {
+                self.refreshControl.endRefreshing()
+            }
+            
+            self.tableView.reloadData()
+        }
     }
 }
 
@@ -60,7 +72,7 @@ extension HomeViewController: UITableViewDataSource {
         switch indexPath.row {
         case 0:
             let cell = tableView.dequeueReusableCell(withIdentifier: "PostHeaderCell") as! PostHeaderCell
-            cell.usernameLabel.text = User.current.username
+            cell.usernameLabel.text = post.poster.username
             
             return cell
             

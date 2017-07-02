@@ -12,7 +12,7 @@ import FirebaseDatabase
 
 struct UserService {
     static func show(forUID uid: String, completion: @escaping (User?) -> Void) {
-        let ref = Database.database().reference().child("users").child(uid)
+        let ref = DatabaseReference.toLocation(.showUser(uid: uid))
         ref.observeSingleEvent(of: .value, with: { (snapshot) in
             guard let user = User(snapshot: snapshot) else {
                 return completion(nil)
@@ -37,8 +37,9 @@ struct UserService {
             completion(user)
         })
     }
+    
     static func posts(for user: User, completion: @escaping ([Post]) -> Void) {
-        let ref = Database.database().reference().child("posts").child(user.uid)
+        let ref = DatabaseReference.toLocation(.posts(uid: user.uid))
         
         ref.observeSingleEvent(of: .value, with: { (snapshot) in
             guard let snapshot = snapshot.children.allObjects as? [DataSnapshot] else {
@@ -72,4 +73,81 @@ struct UserService {
             
         })
     }
+    
+    static func followers(for user: User, completion: @escaping ([String]) -> Void) {
+        let followersRef = DatabaseReference.toLocation(.followers(uid: user.uid))
+        followersRef.observeSingleEvent(of: .value, with: { (snapshot) in
+            guard let followersDict = snapshot.value as? [String : Bool] else {
+                return completion ([])
+            }
+            
+            let followersKey = Array(followersDict.keys)
+            completion(followersKey)
+        })
+    }
+        
+        
+        
+    static func userExcludingCurrentUser (completion: @escaping ([User]) -> Void) {
+        let currentUser = User.current
+        
+        let ref = DatabaseReference.toLocation(.users)
+        
+        ref.observeSingleEvent(of: .value, with: { (snapshot) in
+            guard let snapshot = snapshot.children.allObjects as? [DataSnapshot]
+                else { return completion([]) }
+            let users =
+                snapshot
+                    .flatMap(User.init)
+                    .filter { $0.uid != currentUser.uid }
+            
+            let dispatchGroup = DispatchGroup()
+            users.forEach { (user) in
+                dispatchGroup.enter()
+                
+                FollowService.isUserFollowed(user) { (isFollowed) in
+                    user.isFollowed = isFollowed
+                    dispatchGroup.leave()
+                }
+            }
+            
+            dispatchGroup.notify(queue: .main, execute: {
+                completion(users)
+            })
+        })
+    }
+    
+    
+    static func timeline (completion: @escaping ([Post]) -> Void) {
+        let currentUser = User.current
+    
+        let timelineRef = DatabaseReference.toLocation(.timeline(uid: currentUser.uid))
+        timelineRef.observeSingleEvent(of: .value, with: { (snapshot) in
+            guard let snapshot = snapshot.children.allObjects as? [DataSnapshot]
+                else { return completion([]) }
+            
+            let dispatchGroup = DispatchGroup()
+            
+            var posts = [Post]()
+            
+            for postSnap in snapshot {
+                guard let postDict = postSnap.value as? [String : Any], let posterUID = postDict["poster_uid"] as? String
+                    else { continue }
+                
+                dispatchGroup.enter()
+                
+                PostService.show(forKey: postSnap.key, posterUID: posterUID) { (post) in
+                    if let post = post {
+                        posts.append(post)
+                    }
+                    dispatchGroup.leave()
+                }
+            }
+            dispatchGroup.notify(queue: .main, execute: {
+                completion(posts.reversed())
+            })
+        })
+    }
 }
+
+

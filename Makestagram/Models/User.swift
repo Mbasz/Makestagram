@@ -14,6 +14,8 @@ class User: NSObject {
     let uid: String
     let username: String
     
+    var isFollowed = false
+    
     private static var _current: User?
     
     static var current: User {
